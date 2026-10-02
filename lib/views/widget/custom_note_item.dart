@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class nodeItem extends StatelessWidget {
+class noteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

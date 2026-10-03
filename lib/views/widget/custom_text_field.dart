@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constats.dart';
 
 class CustumTextField extends StatelessWidget {
-  CustumTextField({this.onChanged, required this.hintText});
-  String hintText;
+  CustumTextField({this.maxLines=1, required this.hintText});
+  final String hintText;
+ final int maxLines;
   Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
@@ -11,16 +12,21 @@ class CustumTextField extends StatelessWidget {
       cursorColor: kPrimaryColor,
       decoration: InputDecoration(
         hintText: hintText,
-        
-      border: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
-      borderRadius: BorderRadius.circular(8)),
-      
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white),
-      borderRadius: BorderRadius.circular(8)),
+        hintMaxLines: maxLines,
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(8),
+        ),
 
-      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:kPrimaryColor),
-      borderRadius: BorderRadius.circular(8)),
-       
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(8),
+        ),
+
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kPrimaryColor),
+          borderRadius: BorderRadius.circular(8),
+        ),
       ),
     );
   }

@@ -7,23 +7,64 @@ class AddNoteBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 32,),
-            CustumTextField(hintText: 'title',),
-        
-            SizedBox(height: 16,),
-        
-             CustumTextField(hintText: 'content',maxLines: 5,),
-             SizedBox(height: 32),
+      child: SingleChildScrollView(child: AddNoteForm()),
+    );
+  }
+}
 
-             CustomBotton(onTap: (){}, butonName: 'Add'),
-             SizedBox(height: 16,),
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
 
-        
-          ],
-        ),
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> form = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode
+      .disabled; //مشان اظهرلو ايرور في حال دخل شي غلط و disabled يعني مارح يشتغل هلق
+  String? title, subtitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: form,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          SizedBox(height: 32),
+          CustumTextField(
+            hintText: 'title',
+            onSaved: (Value) {
+              title = Value;
+            },
+          ),
+
+          SizedBox(height: 16),
+
+          CustumTextField(
+            hintText: 'content',
+            maxLines: 5,
+            onSaved: (Value) {
+              subtitle = Value;
+            },
+          ),
+          SizedBox(height: 32),
+
+          CustomBotton(
+            onTap: () {
+              if (form.currentState!.validate()) {//ليقوم بفتح كل الحقول والتحقق من شروط الـ validator.
+                form.currentState!.save();//للحفظ و لتنفيذ دوال الـ onSaved
+              } else {
+                autovalidateMode = AutovalidateMode.always;//يظهر الخطأ فورًا وبشكل دائم، حتى قبل أن يكتب المستخدم أي شيء في الحقل.
+                setState(() {
+                  
+                });
+              }
+            },
+            butonName: 'Add',
+          ),
+          SizedBox(height: 16),
+        ],
       ),
     );
   }

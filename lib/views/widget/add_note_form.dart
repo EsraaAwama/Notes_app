@@ -50,13 +50,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 //ليقوم بفتح كل الحقول والتحقق من شروط الـ validator.
                 form.currentState!.save(); //للحفظ و لتنفيذ دوال الـ onSaved
 
-                // var noteModel = NoteViewModel(
-                //   title: title!,
-                //   subtitle: subtitle!,
-                //   date: DateTime.now().toString(),
-                //   color: Colors.blue.value,
-                // );
-                // BlocProvider.of<AddnoteCubit>(context).addNote(noteModel);
+                var noteModel = NoteViewModel(
+                  title: title!,
+                  subtitle: subtitle!,
+                  date: DateTime.now().toString(),
+                  color: Colors.blue.value,
+                );
+                BlocProvider.of<AddnoteCubit>(context).addNote(noteModel);
               } else {
                 autovalidateMode = AutovalidateMode
                     .always; //يظهر الخطأ فورًا وبشكل دائم، حتى قبل أن يكتب المستخدم أي شيء في الحقل.

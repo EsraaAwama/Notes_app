@@ -10,7 +10,7 @@ class NoteLoading extends NotesState {}
 class NoteSuccess extends NotesState {
   final List<NoteViewModel> notes;
 
-  NoteSuccess({required this.notes});
+  NoteSuccess( this.notes);
 }
 
 class NoteFailure extends NotesState {

@@ -4,7 +4,8 @@ import 'package:notes_app/constats.dart';
 class CustomBotton extends StatelessWidget {
   VoidCallback? onTap;
   String butonName;
-  CustomBotton({required this.onTap,required this.butonName});
+  final bool isLoading;
+  CustomBotton({required this.onTap, required this.butonName,  this.isLoading=false});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,14 +19,18 @@ class CustomBotton extends StatelessWidget {
         ),
 
         child: Center(
-          child: Text(
+          child: isLoading ? SizedBox(
+            height: 24,
+            width: 24,
+            child: CircularProgressIndicator()): Text(
             butonName,
             style: TextStyle(
               color: Colors.black,
               fontSize: 20,
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.bold,
             ),
-            )),
+          ),
+        ),
       ),
     );
   }

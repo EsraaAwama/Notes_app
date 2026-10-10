@@ -10,6 +10,7 @@ class NotesView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+            isScrollControlled: true, //BottomSheet انعملو سكرول كلو لفوق
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),

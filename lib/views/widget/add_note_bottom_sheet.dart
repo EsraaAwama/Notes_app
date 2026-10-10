@@ -32,7 +32,7 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
                 ? true
                 : false, //بتخلي الشاشة توقف لما يكون عم يحمل
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.only(left: 16,right: 16,bottom: MediaQuery.of(context).viewInsets.bottom),//بتخلي كلشي يرتفع قد حجم الكيبورد مشان مايغطي عليهن
               child: SingleChildScrollView(child: AddNoteForm()),
             ),
           );

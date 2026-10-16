@@ -5,6 +5,7 @@ import 'package:notes_app/models/note_view_model.dart';
 import 'package:notes_app/views/widget/custom_note_item.dart';
 
 class NoteListView extends StatelessWidget {
+ // final NoteViewModel noteViewModel;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
@@ -19,7 +20,9 @@ class NoteListView extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child: noteItem(),
+                child: noteItem(
+                  noteViewModel: notes[index],
+                ),
               );
             },
           ),

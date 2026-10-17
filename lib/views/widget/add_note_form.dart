@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/addnote_cubit.dart';
 import 'package:notes_app/models/note_view_model.dart';
 import 'package:notes_app/views/widget/custom_bottom.dart';
@@ -52,11 +53,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   if (form.currentState!.validate()) {
                     //ليقوم بفتح كل الحقول والتحقق من شروط الـ validator.
                     form.currentState!.save(); //للحفظ و لتنفيذ دوال الـ onSaved
+                    var currentDate = DateTime.now();
+                    var formattedDate = DateFormat('yyyy/MM/dd').format(currentDate);
 
                     var noteModel = NoteViewModel(
                       title: title!,
                       subtitle: subtitle!,
-                      date: DateTime.now().toString(),
+                      date:formattedDate,
                       color: Colors.blue.value,
                     );
                     BlocProvider.of<AddnoteCubit>(context).addNote(noteModel);

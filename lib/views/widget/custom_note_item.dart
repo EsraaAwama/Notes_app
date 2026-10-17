@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/models/note_view_model.dart';
 import 'package:notes_app/views/edit_view.dart';
 
-class noteItem extends StatelessWidget {
+class NoteItem extends StatelessWidget {
   final NoteViewModel noteViewModel;
 
-  const noteItem({super.key, required this.noteViewModel});
+  const NoteItem({super.key, required this.noteViewModel});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -45,14 +45,16 @@ class noteItem extends StatelessWidget {
                   ),
                 ),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    noteViewModel.delete();
+                  },
                   icon: Icon(Icons.delete, color: Colors.black, size: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 24),
                 child: Text(
-                 noteViewModel.date,
+                  noteViewModel.date,
                   style: TextStyle(
                     color: Colors.black.withValues(alpha: 0.5),
                     fontSize: 16,

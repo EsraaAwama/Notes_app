@@ -3,13 +3,13 @@ part 'note_view_model.g.dart';//اسم الفايل يلي رح ينعملو gen
 @HiveType(typeId: 0) //هاد الرقم خاص بهاد الكلاس
 class NoteViewModel extends HiveObject {
   @HiveField(0)//ليس خاص بهاد الفيلد فقط لغير كلاس
-  final String title;
+   String title;
   @HiveField(1)
-  final String subtitle;
+   String subtitle;
   @HiveField(2)
   final String date;
   @HiveField(3)
-  final int color;
+   int color;
 
   NoteViewModel({
     required this.title,

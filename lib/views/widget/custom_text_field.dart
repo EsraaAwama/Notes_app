@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constats.dart';
 
 class CustumTextField extends StatelessWidget {
-  CustumTextField({this.maxLines = 1, required this.hintText, this.onSaved});
+  CustumTextField({this.maxLines = 1, required this.hintText, this.onSaved,this.onChanged});
   final String hintText;
   final int maxLines;
   final void Function(String?)? onSaved;
@@ -11,6 +11,7 @@ class CustumTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved, //........................حفظ قيمة الحقل في متغير 
+      onChanged: onChanged,
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'Field is required';
